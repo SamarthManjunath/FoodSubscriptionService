@@ -1,0 +1,70 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: sans-serif;
+    line-height: 1.5;
+    min-height: 100vh;
+    background: #121212; /* Dark background */
+    color: #e0e0e0; /* Light text */
+    flex-direction: column;
+    margin: 0;
+}
+
+.main {
+    background-color: #1f1f1f; /* Dark background for the main container */
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    width: 600px;
+    text-align: center;
+}
+
+h1 {
+    color: #4CAF50; /* Highlighted green color for header */
+}
+
+.form-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.input-pair {
+    display: flex;
+    flex-direction: column;
+    width: 48%; /* Takes up half the width of the form group */
+    margin-bottom: 15px;
+}
+
+label {
+    text-align: left;
+    margin-bottom: 5px;
+    color: #e0e0e0; /* Light color for labels */
+    font-weight: bold;
+}
+
+input {
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #555; /* Dark border for input */
+    border-radius: 5px;
+    background-color: #333; /* Dark background for input */
+    color: #fff; /* Light text */
+}
+
+button {
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 15px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    background-color: #4CAF50; /* Green button */
+    width: 100%;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #45a049; /* Slightly darker green on hover */
+}

@@ -2,12 +2,55 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Food subscription service</title>
-    <h1>Welcome to Food subscription service</h1>
-    <button>Login</button><br><br>
-    <button>Sign up</button>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #121212; /* Dark background */
+            color: #fff; /* Light text for contrast */
+        }
+        .container {
+            text-align: center;
+            padding: 50px 0; /* Adds space from the top */
+        }
+        h1 {
+            color: #fff; /* Ensures header text is visible on dark background */
+        }
+        .button-container {
+            margin-top: 20px;
+        }
+        .btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px 5px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #45a049;
+        }
+    </style>
 </head>
 <body>
+
+<div class="container">
+    <h1>Welcome to Food subscription service</h1>
+    <p>Please choose an option below:</p>
+
+    <div class="button-container">
+        <a href="ChefLogin.html" class="btn">Chef Login</a>
+        <a href="UserLogin.html" class="btn">User Login</a>
+    </div>
+</div>
 
 </body>
 </html>
