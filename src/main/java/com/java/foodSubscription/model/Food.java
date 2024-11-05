@@ -3,6 +3,7 @@ package com.java.foodSubscription.model;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "food")
 public class Food {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

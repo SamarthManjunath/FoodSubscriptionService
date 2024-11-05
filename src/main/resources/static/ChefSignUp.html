@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:form="http://www.w3.org/1999/xhtml">
 
 <head>
     <title>Chef Sign up</title>
@@ -7,12 +7,13 @@
 </head>
 
 <body>
+<a href="index.html" class="home-button">Home</a>
 <h1>Chef Sign up</h1>
 <div class="main">
     <h1>Food subscription service</h1>
     <h3>Please provide the below details</h3>
 
-    <form action="">
+    <form:form action="/chefSignUp" method="post" modelAttribute = "addChef">
         <label for="firstName">
             First Name:
         </label>
@@ -28,7 +29,7 @@
         <label for="first">
             Email:
         </label>
-        <input type="text" id="first" name="first"
+        <input type="text" id="first" name="email"
                placeholder="Enter your email" required>
 
         <label for="password">
@@ -42,7 +43,12 @@
                 Submit
             </button>
         </div>
-    </form>
+    </form:form>
+    <p>Already registered?
+        <a href="ChefLogin.html" style="text-decoration: none;">
+            Login to your account
+        </a>
+    </p>
 </div>
 </body>
 
