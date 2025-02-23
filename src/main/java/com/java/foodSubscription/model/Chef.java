@@ -1,7 +1,7 @@
 package com.java.foodSubscription.model;
 
 import jakarta.persistence.*;
-
+//Testing comments
 @Entity
 @Table(name = "chef")
 public class Chef {
