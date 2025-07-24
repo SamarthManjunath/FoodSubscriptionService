@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>User Sign up</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+<a href="index.html" class="home-button">Home</a>
+<h1>User Sign up</h1>
+<div class="main">
+    <h1>Food subscription service</h1>
+    <h3>Please provide the below details</h3>
+
+    <form action="/userSignUp" method="post">
+        <label for="firstName">
+            First Name:
+        </label>
+        <input type="text" id="firstName" name="firstName"
+               placeholder="Enter your First Name" required>
+
+        <label for="lastName">
+            Last Name:
+        </label>
+        <input type="text" id="lastName" name="lastName"
+               placeholder="Enter your Last Name" required>
+        <br>
+        <label for="first">
+            Email:
+        </label>
+        <input type="text" id="first" name="email"
+               placeholder="Enter your email" required>
+
+        <label for="password">
+            Password:
+        </label>
+        <input type="password" id="password" name="password"
+               placeholder="Enter your Password" required>
+
+        <div class="wrap">
+            <button type="submit">
+                Submit
+            </button>
+        </div>
+    </form>
+        <p>Already registered?
+        <a href="UserLogin.html" style="text-decoration: none;">
+            Login to your account
+        </a>
+    </p>
+</div>
+</body>
+
+</html>
