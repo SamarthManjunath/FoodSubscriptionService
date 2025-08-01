@@ -3,26 +3,26 @@ package com.java.foodSubscription.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "user")
-public class User {
+@Table(name = "users")
+public class Users {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
-    private String id;
-    @Column(name = "firstName")
+    @Column(name = "user_id")
+    private int id;
+    @Column(name = "first_name")
     private String firstName;
-    @Column(name = "lastName")
+    @Column(name = "last_name")
     private String lastName;
     @Column(name = "email")
     private String email;
     @Column(name = "password")
     private String password;
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
