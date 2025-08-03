@@ -20,9 +20,4 @@ public class FoodController {
         foodService.addFood(food);
         return new ModelAndView("redirect:/order");
     }
-
-    @GetMapping("/order")
-    public String showCurrentOrders(){
-        return "order";
-    }
 }

@@ -21,6 +21,7 @@ public class FoodServiceImpl implements FoodService {
 
     @Override
     public List<Food> getFoods() {
-        return List.of();
+        List<Food> foodList = foodRepository.findAll();
+        return foodList;
     }
 }

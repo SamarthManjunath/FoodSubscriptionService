@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Food Selection</title>
+</head>
+<body>
+<h1>Available Foods</h1>
+<h2>Choose 2 out of these</h2>
+
+<form th:action="@{/addOrder}" method="post">
+  <table>
+    <thead>
+    <tr>
+      <th>Select</th>
+      <th>Name</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="item : ${foods}">
+      <td>
+        <input type="checkbox" name="selectedFoods" th:value="${item.id}" />
+      </td>
+      <td th:text="${item.name}"></td>
+    </tr>
+    </tbody>
+  </table>
+
+  <button type="submit">Submit</button>
+</form>
+
+</body>
+</html>
