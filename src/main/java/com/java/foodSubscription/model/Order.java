@@ -9,19 +9,24 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private int id;
-    @Column(name = "item1")
-    private String item1;
-    @Column(name = "item2")
-    private String item2;
+    @Column(name = "foodId1")
+    private int foodId1;
+    @Column(name = "foodId2")
+    private int foodId2;
 
-    //constructor
-    public Order(int id, String item1, String item2) {
-        this.id = id;
-        this.item1 = item1;
-        this.item2 = item2;
+    public Order(int foodId1, int foodId2) {
+        this.foodId1 = foodId1;
+        this.foodId2 = foodId2;
     }
 
-    //getters and setters
+    public int getFoodId1() {
+        return foodId1;
+    }
+
+    public void setFoodId1(int foodId1) {
+        this.foodId1 = foodId1;
+    }
+
     public int getId() {
         return id;
     }
@@ -30,21 +35,14 @@ public class Order {
         this.id = id;
     }
 
-    public String getItem1() {
-        return item1;
+    public int getFoodId2() {
+        return foodId2;
     }
 
-    public void setItem1(String item1) {
-        this.item1 = item1;
+    public void setFoodId2(int foodId2) {
+        this.foodId2 = foodId2;
     }
 
-    public String getItem2() {
-        return item2;
-    }
-
-    public void setItem2(String item2) {
-        this.item2 = item2;
-    }
 
 
 }

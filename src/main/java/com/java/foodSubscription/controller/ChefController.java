@@ -21,7 +21,7 @@ public class ChefController {
     }
 
    @GetMapping("/chef")
-    public String listChefs(){
+    public String getChefLandingPage(){
        return "chef";
     }
 }
