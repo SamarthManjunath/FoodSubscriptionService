@@ -1,7 +1,9 @@
 package com.java.foodSubscription.service.serviceImpl;
 
+import com.java.foodSubscription.model.Food;
 import com.java.foodSubscription.model.Order;
 import com.java.foodSubscription.repository.OrderRepository;
+import com.java.foodSubscription.service.FoodService;
 import com.java.foodSubscription.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,15 +14,31 @@ import java.util.List;
 public class OrderServiceImpl implements OrderService {
 
     @Autowired
-    OrderRepository orderRepository;
+    private OrderRepository orderRepository;
+    
+    @Autowired
+    private FoodService foodService;
 
     @Override
     public List<Order> getAllOrders() {
-        return List.of();
+        List<Order> orders = orderRepository.findAll();
+        // Eagerly fetch user for each order
+        orders.forEach(order -> {
+            if (order.getUser() != null) {
+                // This will initialize the user proxy if it's a lazy-loaded relationship
+                order.getUser().getFirstName();
+            }
+        });
+        return orders;
     }
 
     @Override
     public void addOrder(Order order) {
         orderRepository.save(order);
+    }
+    
+    @Override
+    public Food getFoodById(int id) {
+        return foodService.getFoodById(id);
     }
 }

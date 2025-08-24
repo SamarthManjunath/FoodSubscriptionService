@@ -24,4 +24,9 @@ public class FoodServiceImpl implements FoodService {
         List<Food> foodList = foodRepository.findAll();
         return foodList;
     }
+    
+    @Override
+    public Food getFoodById(int id) {
+        return foodRepository.findById((long) id).orElse(null);
+    }
 }

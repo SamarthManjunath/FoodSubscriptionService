@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <title>Food Selection</title>
+    <link rel="stylesheet" href="../style.css">
 </head>
 <body>
 <h1>Available Foods</h1>
@@ -24,7 +25,7 @@
     </tr>
     </tbody>
   </table>
-
+    <input type="hidden" name="user_id" th:value="${user_id}" />
   <button type="submit">Submit</button>
 </form>
 

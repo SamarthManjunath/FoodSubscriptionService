@@ -1,10 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Order</title>
-</head>
+    <title>Food Orders</title>
+    <link rel="stylesheet" href="../style.css">
+
 <body>
+<h1>Food Orders</h1>
+
+<div th:if="${orders != null and !orders.empty}">
+    <table>
+        <thead>
+            <tr>
+                <th>Order ID</th>
+                <th>Food Item 1</th>
+                <th>Food Item 2</th>
+                <th>Customer name</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="order : ${orders}">
+                <td th:text="${order.id}">Order ID</td>
+                <td th:text="${order.foodName1}">Food Item 1</td>
+                <td th:text="${order.foodName2}">Food Item 2</td>
+                <td th:text="${order.user.firstName + ' ' + order.user.lastName}">Customer Name</td>
+<!--                <td th:text="${#temporals.format(#temporals.createNow(), 'yyyy-MM-dd HH:mm')}">Order Date</td>-->
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div th:unless="${orders != null and !orders.empty}" class="no-orders">
+    <p>No orders found.</p>
+</div>
 
 </body>
 </html>

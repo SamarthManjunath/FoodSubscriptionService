@@ -2,13 +2,47 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: sans-serif;
-    line-height: 1.5;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
     min-height: 100vh;
     background: #121212; /* Dark background */
     color: #e0e0e0; /* Light text */
     flex-direction: column;
-    margin: 0;
+    margin: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    color: #e0e0e0;
+}
+
+th, td {
+    border: 1px solid #444;
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background-color: #2d2d2d;
+    font-weight: bold;
+}
+
+tr:nth-child(even) {
+    background-color: #1f1f1f;
+}
+
+.no-orders {
+    text-align: center;
+    color: #999;
+    margin-top: 20px;
+}
+
+h1 {
+    color: #e0e0e0;
+    text-align: center;
+    margin-bottom: 30px;
 }
 
 .main {
@@ -53,34 +87,52 @@ input {
     color: #fff; /* Light text */
 }
 
-button {
-    padding: 15px;
+button, .home-button {
+    padding: 15px 25px;
     border-radius: 10px;
-    margin-top: 15px;
+    margin: 10px;
     border: none;
     color: white;
     cursor: pointer;
     background-color: #4CAF50; /* Green button */
-    width: 100%;
     font-size: 16px;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    min-width: 150px;
+}
+
+/* Button styles */
+.home-button {
+    background-color: #2196F3; /* Blue color for home buttons */
+    padding: 15px 25px;
+    border-radius: 10px;
+    margin: 10px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    min-width: 150px;
+    transition: all 0.3s ease;
+}
+
+.home-button:hover {
+    background-color: #0b7dda; /* Darker blue on hover */
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+    flex-wrap: wrap;
 }
 
 button:hover {
     background-color: #45a049; /* Slightly darker green on hover */
-}
-
-.home-button {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    padding: 10px 15px;
-    background-color: #4CAF50;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    font-weight: bold;
-}
-
-.home-button:hover {
-    background-color: #45a049;
 }

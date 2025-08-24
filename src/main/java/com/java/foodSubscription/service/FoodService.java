@@ -9,4 +9,5 @@ import java.util.List;
 public interface FoodService {
     void addFood(Food food);
     List<Food> getFoods();
+    Food getFoodById(int id);
 }
