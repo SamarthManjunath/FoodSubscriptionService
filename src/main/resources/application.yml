@@ -1,0 +1,53 @@
+server:
+  error:
+    whitelabel:
+      enabled: false
+
+spring:
+  datasource:
+    password: postgres
+    url: jdbc:postgresql://localhost:5436/postgres
+    username: postgres
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    cache: false
+
+  task:
+    execution:
+      thread-name-prefix: task-
+      pool:
+        core-size: 5
+        max-size: 10
+        queue-capacity: 25
+    scheduling:
+      thread-name-prefix: sched-
+
+management:
+  endpoints:
+    web:
+      base-path: /details
+
+# Enable async processing
+async:
+  executor:
+    thread:
+      name-prefix: async-
+      core-pool-size: 5
+      max-pool-size: 10
+      queue-capacity: 100
+
+# Logging configuration
+logging:
+  level:
+    org.springframework.scheduling: INFO
+    com.java.foodSubscription.service: DEBUG

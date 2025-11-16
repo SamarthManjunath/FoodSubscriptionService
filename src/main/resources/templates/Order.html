@@ -4,31 +4,66 @@
     <meta charset="UTF-8">
     <title>Food Orders</title>
     <link rel="stylesheet" href="../style.css">
-
+    <style>
+        .status-select {
+            padding: 5px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+        .status-received { color: #2196F3; }
+        .status-preparing { color: #FFC107; }
+        .status-done { color: #4CAF50; }
+        .status-delivered { color: #9E9E9E; }
+    </style>
+</head>
 <body>
 <h1>Food Orders</h1>
 
 <div th:if="${orders != null and !orders.empty}">
     <table>
         <thead>
-            <tr>
-                <th>Order ID</th>
-                <th>Food Item 1</th>
-                <th>Food Item 2</th>
-                <th>Customer name</th>
-            </tr>
+        <tr>
+            <th>Order ID</th>
+            <th>Food Item 1</th>
+            <th>Food Item 2</th>
+            <th>Customer Name</th>
+            <th>Date & Time</th>
+            <th>Order Status</th>
+            <th>Action</th>
+        </tr>
         </thead>
         <tbody>
-            <tr th:each="order : ${orders}">
-                <td th:text="${order.id}">Order ID</td>
-                <td th:text="${order.foodName1}">Food Item 1</td>
-                <td th:text="${order.foodName2}">Food Item 2</td>
-                <td th:text="${order.user.firstName + ' ' + order.user.lastName}">Customer Name</td>
-<!--                <td th:text="${#temporals.format(#temporals.createNow(), 'yyyy-MM-dd HH:mm')}">Order Date</td>-->
-            </tr>
+        <tr th:each="order : ${orders}">
+            <td th:text="${order.id}">Order ID</td>
+            <td th:text="${order.foodName1}">Food Item 1</td>
+            <td th:text="${order.foodName2}">Food Item 2</td>
+            <td th:text="${order.user.firstName + ' ' + order.user.lastName}">Customer Name</td>
+            <td th:text="${#temporals.format(order.orderDate, 'yyyy-MM-dd HH:mm')}">Date</td>
+            <td>
+                <span th:class="'status-' + ${order.status.toString().toLowerCase()}"
+                      th:text="${#strings.capitalize(#strings.toLowerCase(order.status.toString()))}">
+                    Status
+                </span>
+            </td>
+            <td>
+                <form th:action="@{/order/updateStatus}" method="post" style="display: inline;">
+                    <input type="hidden" name="orderId" th:value="${order.id}">
+<!--                    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>-->
+                    <select name="status" onchange="this.form.submit()" class="status-select"
+                            th:classappend="'status-' + ${order.status.toString().toLowerCase()}">
+                        <option th:each="status : ${T(com.java.foodSubscription.model.OrderStatus).values()}"
+                                th:value="${status.toString().toLowerCase()}"
+                                th:text="${#strings.capitalize(#strings.toLowerCase(status.toString()))}"
+                                th:selected="${order.status == status}">
+                        </option>
+                    </select>
+                </form>
+            </td>
+        </tr>
         </tbody>
     </table>
 </div>
+
 <div th:unless="${orders != null and !orders.empty}" class="no-orders">
     <p>No orders found.</p>
 </div>

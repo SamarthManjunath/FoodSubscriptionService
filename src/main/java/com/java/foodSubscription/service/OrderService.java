@@ -10,4 +10,5 @@ public interface OrderService {
     List<Order> getAllOrders();
     void addOrder(Order order);
     Food getFoodById(int id);
+    Optional<Order> getOrderById(Long id);
 }

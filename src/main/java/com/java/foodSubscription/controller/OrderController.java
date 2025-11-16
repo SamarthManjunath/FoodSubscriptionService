@@ -2,6 +2,7 @@ package com.java.foodSubscription.controller;
 
 import com.java.foodSubscription.model.Food;
 import com.java.foodSubscription.model.Order;
+import com.java.foodSubscription.model.OrderStatus;
 import com.java.foodSubscription.model.Users;
 import com.java.foodSubscription.service.FoodService;
 import com.java.foodSubscription.service.OrderService;
@@ -12,6 +13,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,7 +40,8 @@ public class OrderController {
 
         if (userOptional.isPresent()) {
             Users user = userOptional.get();
-            Order order = new Order(selectedFoods.get(0), selectedFoods.get(1));
+            LocalDateTime localDateTime = LocalDateTime.now();
+            Order order = new Order(selectedFoods.get(0), selectedFoods.get(1), localDateTime);
             order.setUser(user);
             orderService.addOrder(order);
             return new ModelAndView("redirect:/tracking");
@@ -66,5 +74,17 @@ public class OrderController {
     @GetMapping("/tracking")
     public String getTrackingPage(){
         return "tracking";
+    }
+
+    @PostMapping("/order/updateStatus")
+    public String updateOrderStatus(@RequestParam("orderId") int orderId,
+                                    @RequestParam("status") String status) {
+        Optional<Order> orderOptional = orderService.getOrderById((long)orderId);
+        if (orderOptional.isPresent()) {
+            Order order = orderOptional.get();
+            order.setStatus(OrderStatus.fromString(status));
+            orderService.addOrder(order); // This will update the existing order
+        }
+        return "redirect:/order";
     }
 }
