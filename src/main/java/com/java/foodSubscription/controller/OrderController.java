@@ -71,11 +71,6 @@ public class OrderController {
         return modelAndView;
     }
 
-    @GetMapping("/tracking")
-    public String getTrackingPage(){
-        return "tracking";
-    }
-
     @PostMapping("/order/updateStatus")
     public String updateOrderStatus(@RequestParam("orderId") int orderId,
                                     @RequestParam("status") String status) {

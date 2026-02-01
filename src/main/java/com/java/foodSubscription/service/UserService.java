@@ -7,7 +7,7 @@ import java.util.Optional;
 
 
 public interface UserService {
-    void addUser(Users users);
+    Users addUser(Users users);
     List<Users> getUsers();
 
     Optional<Users> getUserById(int userId);

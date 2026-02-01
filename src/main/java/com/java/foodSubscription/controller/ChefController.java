@@ -14,17 +14,21 @@ public class ChefController {
     @Autowired
     ChefService chefService;
 
-    //this has been tested and working fine
+    //End point to create a new chef
     @PostMapping("/addChef")
     public ModelAndView addChef(@ModelAttribute Chef chef, HttpSession httpSession){
-        chefService.addChef(chef);
-        httpSession.setAttribute("chef_id", chef.getId());
+        System.out.println("Inside ChefController.....");
+        Chef savedChef = chefService.addChef(chef);//since we are using auto generated id, we need to capture the saved chef object to get the generated id
+        httpSession.setAttribute("chef_id", savedChef.getId());
+        System.out.println("Chef session ID before sending to dashboard: " + httpSession.getAttribute("chef_id"));
         return new ModelAndView("redirect:/chef");
     }
 
+    //end point is triggered by addChef() to go to chef landing page
    @GetMapping("/chef")
     public ModelAndView getChefLandingPage(HttpSession httpSession){
         ModelAndView modelAndView = new ModelAndView("chef");
+        System.out.println("Chef session ID in chef dashboard page:" +  httpSession.getAttribute("chef_id")); //to log if landing page has access to chef session attribute
         modelAndView.addObject("chef_id", httpSession.getAttribute("chef_id"));
         return modelAndView;
     }
