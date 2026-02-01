@@ -5,15 +5,43 @@
     <title>Food Orders</title>
     <link rel="stylesheet" href="../style.css">
     <style>
-        .status-select {
-            padding: 5px;
-            border-radius: 4px;
-            border: 1px solid #ccc;
-        }
-        .status-received { color: #2196F3; }
-        .status-preparing { color: #FFC107; }
-        .status-done { color: #4CAF50; }
-        .status-delivered { color: #9E9E9E; }
+        body {
+    background: #ffffff !important; /* Force white background */
+    color: #333 !important;
+}
+        table {
+    width: 90%;
+    border-collapse: collapse;
+    background: #ffffff; /* White background */
+    color: #333; /* Dark text */
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+}
+
+th {
+    background: #f0f0f0; /* Light grey header */
+    color: #333;
+    font-weight: bold;
+    padding: 12px;
+    border-bottom: 2px solid #ccc;
+}
+
+td {
+    background: #ffffff; /* White rows */
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+tr:hover {
+    background: #f9f9f9; /* Slight hover highlight */
+}
+
+select {
+    background: #fff;
+    color: #333;
+    border: 1px solid #ccc;
+    padding: 5px 8px;
+    border-radius: 4px;
+}
     </style>
 </head>
 <body>

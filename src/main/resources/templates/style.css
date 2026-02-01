@@ -5,23 +5,23 @@ body {
     font-family: sans-serif;
     line-height: 1.5;
     min-height: 100vh;
-    background: #121212; /* Dark background */
-    color: #e0e0e0; /* Light text */
+    background: #f5f5f5; /* Light background */
+    color: #333; /* Dark text */
     flex-direction: column;
     margin: 0;
 }
 
 .main {
-    background-color: #1f1f1f; /* Dark background for the main container */
+    background-color: #ffffff; /* White card background */
     border-radius: 15px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Softer light shadow */
     padding: 20px;
     width: 600px;
     text-align: center;
 }
 
 h1 {
-    color: #4CAF50; /* Highlighted green color for header */
+    color: #2c7a2c; /* Softer green for header */
 }
 
 .form-group {
@@ -33,24 +33,24 @@ h1 {
 .input-pair {
     display: flex;
     flex-direction: column;
-    width: 48%; /* Takes up half the width of the form group */
+    width: 48%;
     margin-bottom: 15px;
 }
 
 label {
     text-align: left;
     margin-bottom: 5px;
-    color: #e0e0e0; /* Light color for labels */
+    color: #444; /* Darker text for readability */
     font-weight: bold;
 }
 
 input {
     padding: 10px;
     box-sizing: border-box;
-    border: 1px solid #555; /* Dark border for input */
+    border: 1px solid #ccc; /* Light border */
     border-radius: 5px;
-    background-color: #333; /* Dark background for input */
-    color: #fff; /* Light text */
+    background-color: #fff; /* White input background */
+    color: #333; /* Dark text */
 }
 
 button {
@@ -66,13 +66,13 @@ button {
 }
 
 button:hover {
-    background-color: #45a049; /* Slightly darker green on hover */
+    background-color: #45a049; /* Darker green */
 }
 
 .home-button {
     position: absolute;
     top: 10px;
-    left: 10px;
+   left: 10px;
     padding: 10px 15px;
     background-color: #4CAF50;
     color: white;
@@ -83,4 +83,31 @@ button:hover {
 
 .home-button:hover {
     background-color: #45a049;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.dashboard-button {
+  background-color: #2196F3;
+  color: white;
+  padding: 14px 22px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: bold;
+  min-width: 180px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.2s ease;
+}
+
+.dashboard-button:hover {
+  background-color: #0b7dda;
+  transform: translateY(-2px);
 }

@@ -7,6 +7,6 @@ import java.util.List;
 
 
 public interface ChefService {
-    void addChef(Chef chef);
+    Chef addChef(Chef chef);
     List<Chef> getChefs();
 }
