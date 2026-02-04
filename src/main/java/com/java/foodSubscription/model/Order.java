@@ -27,7 +27,7 @@ public class Order {
     
     @Column(name = "status_updated_at")
     private LocalDateTime statusUpdatedAt = LocalDateTime.now();
-    @OneToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY) //allows multiple orders for one user
     @JoinColumn(name = "user_id", referencedColumnName = "user_id")
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private Users user;

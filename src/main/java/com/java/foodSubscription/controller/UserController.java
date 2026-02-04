@@ -1,5 +1,8 @@
 package com.java.foodSubscription.controller;
 
+import com.java.foodSubscription.dto.ChefLoginDTO;
+import com.java.foodSubscription.dto.UserLoginDTO;
+import com.java.foodSubscription.model.Chef;
 import com.java.foodSubscription.model.Food;
 import com.java.foodSubscription.model.Order;
 import com.java.foodSubscription.model.Users;
@@ -36,6 +39,20 @@ public class UserController {
         httpSession.setAttribute("user_id", savedUser.getId());
         System.out.println("User session ID before sending to dashboard: " + httpSession.getAttribute("user_id"));
         return new ModelAndView("redirect:/users");
+    }
+
+    @GetMapping("/userLogin")
+    public ModelAndView userLogin(@ModelAttribute UserLoginDTO user, HttpSession httpSession){
+        System.out.println("Inside userLogin of UserController....");
+        //check if the user exists
+        Optional<Users> loggedInUser = userService.getUsers(user);
+        if(loggedInUser.isPresent()){ //if chef exists, set session attribute and redirect to chef landing page
+            httpSession.setAttribute("user_id", loggedInUser.get().getId());
+            System.out.println("User session ID before sending to dashboard: " + httpSession.getAttribute("user_id"));
+            return new ModelAndView("redirect:/users");
+        }else { //if user does not exist, redirect to login page
+            return new ModelAndView("redirect:/UserLogin");
+        }
     }
 
     //returns all foods posted by Chef

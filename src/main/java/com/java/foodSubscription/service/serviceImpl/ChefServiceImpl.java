@@ -1,5 +1,6 @@
 package com.java.foodSubscription.service.serviceImpl;
 
+import com.java.foodSubscription.dto.ChefLoginDTO;
 import com.java.foodSubscription.model.Chef;
 import com.java.foodSubscription.repository.ChefRepository;
 import com.java.foodSubscription.service.ChefService;
@@ -41,8 +42,22 @@ public class ChefServiceImpl implements ChefService {
          return chefRepository.save(hashChef);
     }
 
+    //used for login
     @Override
-    public List<Chef> getChefs() {
-        return List.of();
+    public Optional<Chef> getChef(ChefLoginDTO chef) {
+        String chefEmail = chef.getEmail();
+        Optional<Chef> existingChef = chefRepository.findByEmail(chefEmail);
+        if(existingChef.isPresent()){
+            //check if password matches
+            boolean isPasswordMatch = passwordEncoder.matches(chef.getPassword(), existingChef.get().getPassword());
+            if(isPasswordMatch){
+                return existingChef;
+            }else {
+                return Optional.empty();
+            }
+        }else {
+            return Optional.empty();
+        }
     }
+
 }

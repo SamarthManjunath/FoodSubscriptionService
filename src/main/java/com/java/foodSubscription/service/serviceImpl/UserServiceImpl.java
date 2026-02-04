@@ -1,5 +1,7 @@
 package com.java.foodSubscription.service.serviceImpl;
 
+import com.java.foodSubscription.dto.UserLoginDTO;
+import com.java.foodSubscription.model.Chef;
 import com.java.foodSubscription.model.Users;
 import com.java.foodSubscription.repository.UserRepository;
 import com.java.foodSubscription.service.UserService;
@@ -44,8 +46,20 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<Users> getUsers() {
-        return List.of();
+    public Optional<Users> getUsers(UserLoginDTO userLoginDTO) {
+        String email = userLoginDTO.getEmail();
+        Optional<Users> existingUser = userRepository.findByEmail(email);
+        if(existingUser.isPresent()){
+            //check if password matches
+            boolean isPasswordMatch = passwordEncoder.matches(userLoginDTO.getPassword(), existingUser.get().getPassword());
+            if(isPasswordMatch){
+                return existingUser;
+            }else {
+                return Optional.empty();
+            }
+        }else {
+            return Optional.empty();
+        }
     }
 
     @Override
