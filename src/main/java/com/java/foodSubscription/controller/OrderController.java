@@ -34,15 +34,16 @@ public class OrderController {
     @PostMapping("/addOrder")
     public ModelAndView addOrder(@RequestParam("selectedFoods")List<Integer> selectedFoods,
                                  @RequestParam("user_id")int userId){
+        System.out.println("Inside addOrder of OrderController....");
         Optional<Users> userOptional = userService.getUserById(userId);
-        //for logging purpose
         System.out.println("User ID is: " + userId);
-
         if (userOptional.isPresent()) {
             Users user = userOptional.get();
+            System.out.println("Retrieved user: " + user.getFirstName() + " " + user.getLastName());
             LocalDateTime localDateTime = LocalDateTime.now();
             Order order = new Order(selectedFoods.get(0), selectedFoods.get(1), localDateTime);
             order.setUser(user);
+            System.out.println("User set for the order....");
             orderService.addOrder(order);
             return new ModelAndView("redirect:/tracking");
         } else {
