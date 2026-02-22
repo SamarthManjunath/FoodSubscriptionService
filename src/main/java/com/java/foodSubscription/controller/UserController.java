@@ -34,14 +34,14 @@ public class UserController {
 
     @PostMapping("/adduser")
     public ModelAndView addUser(@ModelAttribute Users users, HttpSession httpSession){
-        System.out.println("Inside UserController.....");
+        System.out.println("Inside add user of UserController.....");
         Users savedUser = userService.addUser(users);
         httpSession.setAttribute("user_id", savedUser.getId());
         System.out.println("User session ID before sending to dashboard: " + httpSession.getAttribute("user_id"));
         return new ModelAndView("redirect:/users");
     }
 
-    @GetMapping("/userLogin")
+    @PostMapping("/userLogin")
     public ModelAndView userLogin(@ModelAttribute UserLoginDTO user, HttpSession httpSession){
         System.out.println("Inside userLogin of UserController....");
         //check if the user exists
@@ -58,6 +58,7 @@ public class UserController {
     //returns all foods posted by Chef
     @GetMapping("/users")
     public ModelAndView getAllFood(HttpSession httpSession){
+        System.out.println("Inside getAllFood of UserController....");
         ModelAndView modelAndView = new ModelAndView("food");
         modelAndView.addObject("foods", foodService.getFoods());
         modelAndView.addObject("user_id", httpSession.getAttribute("user_id"));
@@ -69,6 +70,7 @@ public class UserController {
     @GetMapping("/tracking")
     public ModelAndView getTrackingPage(HttpSession httpSession){
         //need to add session validation
+        System.out.println("Inside getTrackingPage of UserController....");
         ModelAndView modelAndView = new ModelAndView("tracking");
         modelAndView.addObject("user_id", httpSession.getAttribute("user_id"));
         Object userIdObj = httpSession.getAttribute("user_id");

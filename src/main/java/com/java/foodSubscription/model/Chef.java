@@ -8,9 +8,9 @@ import lombok.Data;
 @Data
 public class Chef {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-   private int id;
+   private Integer id;
     @Column(name = "firstName")
     private String firstName;
     @Column(name = "lastName")

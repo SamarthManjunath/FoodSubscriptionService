@@ -11,9 +11,9 @@ import java.time.LocalDateTime;
 @Data
 public class Order {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private int id;
+    private Integer id;
     @Column(name = "foodId1")
     private int foodId1;
     @Column(name = "foodId2")
